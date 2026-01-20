@@ -1,27 +1,29 @@
 ## Lab 3
 
-#### Clone the repository into your debian environment:
-`https://gitlab.com/cit_4640/4640-w3-lab-start-w25`
+#### After cloning the repository into our debian environment:
+https://gitlab.com/cit_4640/4640-w3-lab-start-w25
 
-We have three scripts were must make changes to:
+We have three scripts that we need to make changes to:
   1. import-key
   2. create-bucket
   3. create-ec2
 
-### 1. Change the key-name to `bcitkey`
-Find this line at the bottom of the script: 
+### 1. Complete the import-key key
+Find this line at the bottom of the script and change the key-name to `bcitkey`:
 
-```bash aws ec2 import-key-pair --key-name "bcitkey" --public-key-material fileb://${public_key_file} > key_data ```
+```bash
+aws ec2 import-key-pair --key-name "bcitkey" --public-key-material fileb://${public_key_file} > key_data
+```
 
 ------
 
 ### 2. Complete the create-bucket script
 
-references:
+References:
 - https://docs.aws.amazon.com/cli/latest/reference/s3api/create-bucket.html
-- https://docs.aws.amazon.com/cli/v1/userguide/cli-services-ec2-instances.html
 
 ```bash
+# ...
 else
     aws s3api create-bucket \
         --bucket "$bucket_name" \
@@ -33,9 +35,10 @@ fi
 -----
 ### 3. Complete the create-ec2 script.
 References: 
-https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html
+- https://docs.aws.amazon.com/cli/v1/userguide/cli-services-ec2-instances.html
+- https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html
 
-**Make the following changes to the script:**
+**We added the following changes to the script:**
 
 ```bash
 instance_id=$(aws ec2 run-instances \
@@ -61,6 +64,7 @@ echo "$public_ip" > instance_data
 ```
 
     
+
 
 
 
