@@ -37,8 +37,9 @@ fi
 References: 
 - https://docs.aws.amazon.com/cli/v1/userguide/cli-services-ec2-instances.html
 - https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html
+- https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html
 
-**We added the following changes to the script:**
+**We added the following commands to the script:**
 
 ```bash
 instance_id=$(aws ec2 run-instances \
@@ -64,6 +65,7 @@ echo "$public_ip" > instance_data
 ```
 
     
+
 
 
 
