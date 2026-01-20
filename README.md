@@ -11,6 +11,8 @@ We have three scripts were must make changes to:
 ### 1. Change the key-name to `bcitkey`
 Find this line at the bottom of the script: aws ec2 import-key-pair --key-name "bcitkey" --public-key-material fileb://${public_key_file} > key_data
 
+------
+
 ### 2. Complete the create-bucket script
 `else
     aws s3api create-bucket \
@@ -19,9 +21,15 @@ Find this line at the bottom of the script: aws ec2 import-key-pair --key-name "
         --create-bucket-configuration LocationConstraint=us-west-2;
 fi`
 
-### 3. Complete the create-ec2 script
-**Make the following changes:**
-`instance_id=$(aws ec2 run-instances \
+-----
+### 3. Complete the create-ec2 script.
+References: 
+https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html
+
+**Make the following changes to the script:**
+
+
+instance_id=$(aws ec2 run-instances \
     --image-id "$debian_ami" \
     --instance-type t3.micro \
     --key-name "$key_name" \
@@ -30,18 +38,20 @@ fi`
     --associate-public-ip-address \
     --region "$region" \
     --query "Instances[0].InstanceId" \
-    --output text)`
+    --output text)
+    
 
-
-`# Get the public IP address of the EC2 instance
+`
+#Get the public IP address of the EC2 instance
 public_ip=$(aws ec2 describe-instances \
     --instance-ids "$instance_id" \
     --query Reservations[0].Instances[0].PublicIpAddress \
-    --output text)`
+    --output text)
 
-` #Write instance data to a file
+#Write instance data to a file
 echo "Public IP: $public_ip"
-echo "$public_ip" > instance_data`
+echo "$public_ip" > instance_data
 
 
     
+
