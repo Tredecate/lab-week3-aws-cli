@@ -27,5 +27,5 @@ fi
 
 # use aws to import the public key into aws account, write info about import to key_data file
 # aws will generate errors, so I am just letting the aws cli handle error messages here
-aws ec2 import-key-pair --key-name "COMPLETE ME" --public-key-material fileb://${public_key_file} > key_data
+aws ec2 import-key-pair --key-name "bcitkey" --public-key-material fileb://${public_key_file} > key_data
 
