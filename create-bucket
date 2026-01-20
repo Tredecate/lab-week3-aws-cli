@@ -18,6 +18,6 @@ else
     aws s3api create-bucket \
         --bucket "$bucket_name" \
         --region us-west-2 \
-        --create-bucket-configuration LocationConstraint=us-west-2 2>/dev/null;
+        --create-bucket-configuration LocationConstraint=us-west-2;
 fi
 
