@@ -47,8 +47,6 @@ instance_id=$(aws ec2 run-instances \
     --query "Instances[0].InstanceId" \
     --output text)
     
-
-`
 #Get the public IP address of the EC2 instance
 public_ip=$(aws ec2 describe-instances \
     --instance-ids "$instance_id" \
@@ -61,5 +59,6 @@ echo "$public_ip" > instance_data
 ```
 
     
+
 
 
