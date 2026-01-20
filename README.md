@@ -14,12 +14,19 @@ Find this line at the bottom of the script: aws ec2 import-key-pair --key-name "
 ------
 
 ### 2. Complete the create-bucket script
-`else
+
+references:
+- https://docs.aws.amazon.com/cli/latest/reference/s3api/create-bucket.html
+- https://docs.aws.amazon.com/cli/v1/userguide/cli-services-ec2-instances.html
+
+```bash
+else
     aws s3api create-bucket \
         --bucket "$bucket_name" \
         --region us-west-2 \
         --create-bucket-configuration LocationConstraint=us-west-2;
-fi`
+fi
+```
 
 -----
 ### 3. Complete the create-ec2 script.
@@ -28,7 +35,7 @@ https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html
 
 **Make the following changes to the script:**
 
-
+```bash
 instance_id=$(aws ec2 run-instances \
     --image-id "$debian_ami" \
     --instance-type t3.micro \
@@ -51,7 +58,8 @@ public_ip=$(aws ec2 describe-instances \
 #Write instance data to a file
 echo "Public IP: $public_ip"
 echo "$public_ip" > instance_data
-
+```
 
     
+
 
