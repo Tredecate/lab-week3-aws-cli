@@ -9,7 +9,9 @@ We have three scripts were must make changes to:
   3. create-ec2
 
 ### 1. Change the key-name to `bcitkey`
-Find this line at the bottom of the script: aws ec2 import-key-pair --key-name "bcitkey" --public-key-material fileb://${public_key_file} > key_data
+Find this line at the bottom of the script: 
+
+```bash aws ec2 import-key-pair --key-name "bcitkey" --public-key-material fileb://${public_key_file} > key_data ```
 
 ------
 
@@ -59,6 +61,7 @@ echo "$public_ip" > instance_data
 ```
 
     
+
 
 
 
